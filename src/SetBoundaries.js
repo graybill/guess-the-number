@@ -3,38 +3,51 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { startNewGame } from './actions'
 
-//const SetBoundaries = ({ dispatch }, props) => {
 class SetBoundaries extends Component {
 
   render() {
-    let lbInput; // references the input field in the form via "ref/node/input"
+    let lbInput;
     let ubInput;
 
-    console.log(this);
     return(
       <div>
         <form
           onSubmit = {e => {
             e.preventDefault();
-            // TODO: Check for empty values
 
-            console.log('ibInput => %o', lbInput.value)
+            // NB> We could also check for empty; this is just some quick and dirty error checking
+            let lower = parseInt(lbInput.value) || 0;
+            let higher = parseInt(ubInput.value) || 0;
 
-            // TODO: lower needs to be less than higher
-            this.props.startNewGame(lbInput.value, ubInput.value);
+            if (lower > higher) {
+              window.alert('the lower number needs to be lower than the higher number');
+              return;
+            }
+            if (lower === higher) {
+              window.alert('where is the fun in that?');
+              return;
+            }
+
+            this.props.startNewGame(lower, higher);
           }}
         >
-          <input type="text"
-            placeholder="Lower bound"
-            defaultValue={ this.props.gameVals.lowerBound }
-            ref={node => lbInput = node}
-          />
+          <div>
+            <label>Lower bound:</label>
+            <input type="text"
+              placeholder="Lower bound"
+              defaultValue={ this.props.gameVals.lowerBound }
+              ref={node => lbInput = node}
+            />
+          </div>
 
-          <input type="text"
-            placeholder="Upper bound"
-            defaultValue={ this.props.gameVals.upperBound }
-            ref={node => ubInput = node}
-          />
+          <div>
+            <label>Upper bound:</label>
+            <input type="text"
+              placeholder="Upper bound"
+              defaultValue={ this.props.gameVals.upperBound }
+              ref={node => ubInput = node}
+            />
+          </div>
 
           <button type="submit">Reset</button>
         </form>

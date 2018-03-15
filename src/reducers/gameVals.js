@@ -12,7 +12,6 @@ const gameVals = (state = [], action) => {
         numberToGuess: generateNumber(action.upperBound, action.lowerBound)
       })
 
-
     case 'SET_LAST_GUESS':
       return Object.assign({}, state, {
         lastGuess: state.currentGuess
@@ -23,13 +22,13 @@ const gameVals = (state = [], action) => {
       let gameState;
 
       if (guess === state.numberToGuess) {
-        gameState = "correct"
+        gameState = "correct - let's play again!";
       }
       if (guess < state.numberToGuess) {
-        gameState = "too low"
+        gameState = "too low";
       }
       if (guess > state.numberToGuess) {
-        gameState = "too high"
+        gameState = "too high";
       }
 
       return Object.assign({}, state, {
