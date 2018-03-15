@@ -10,7 +10,8 @@ const GuessNumber = ({ dispatch }) => {
       <form
         onSubmit = {e => {
           e.preventDefault();
-          
+
+          // TODO: How did we pass this check with an empty input?
           if (isNaN(guessInput.value)) {
             window.alert('please use a number for guessing');
             return;

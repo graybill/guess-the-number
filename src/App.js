@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from './reducers';
+import { Panel } from 'react-bootstrap';
 
 import { generateNumber } from './helpers';
 
@@ -30,11 +31,16 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
-          <h1>Play Guess the Number!</h1>
-          <PlayContainer />
-          <ConfigContainer />
-        </div>
+        <Panel className="App">
+          <Panel.Heading>
+            Play Guess the Number!
+          </Panel.Heading>
+          <Panel.Body>
+            <PlayContainer />
+            <ConfigContainer />
+          </Panel.Body>
+
+        </Panel>
       </Provider>
     );
   }
