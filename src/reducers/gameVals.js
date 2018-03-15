@@ -1,14 +1,15 @@
+import { generateNumber } from '../helpers';
+import initialState from '../App';
 
 const gameVals = (state = [], action) => {
   switch (action.type) {
 
+    // Start new game, optionally updating the boundaries
     case 'START_NEW_GAME':
-      // reset initial state with new boundaries?
-      return Object.assign({}, state, {
+      return Object.assign({}, initialState, {
         lowerBound: action.lowerBound,
         upperBound: action.upperBound,
-        //TODO: how to access this generateNumber helper function across files
-        //numberToGuess: generateNumber(action.lowerBound, action.upperBound)
+        numberToGuess: generateNumber(action.upperBound, action.lowerBound)
       })
 
 

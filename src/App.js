@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux'
-import rootReducer from './reducers'
+import { createStore } from 'redux';
+import rootReducer from './reducers';
+
+import { generateNumber } from './helpers';
 
 import PlayContainer from './PlayContainer';
 import ConfigContainer from './ConfigContainer';
 
 import './App.css';
 
-// TODO:
-// Ensure there's no +1 issue
-// Ensure accessible from actions
-// Does this belong here in this file?
-const generateNumber = (upperBound=10, lowerBound=0) => {
-  return Math.floor(Math.random() * (upperBound - lowerBound) + lowerBound);
-}
 
 // TODO: Does initialState belong here or in the reducers?
-const initialState = {
+export const initialState = {
   gameVals:
     {
       lowerBound: 0,
@@ -27,6 +22,7 @@ const initialState = {
       numberToGuess: generateNumber()
     }
 };
+
 
 const store = createStore(rootReducer, initialState)
 

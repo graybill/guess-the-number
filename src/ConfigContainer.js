@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 
 import SetBoundaries from './SetBoundaries';
 
-
 class ConfigContainer extends Component {
   render() {
     return (
       <div>
-        <hr />
-        <p>Config Container [ I DON'T WORK YET]</p>
+        <p>Config Container</p>
         <SetBoundaries />
       </div>
     );
