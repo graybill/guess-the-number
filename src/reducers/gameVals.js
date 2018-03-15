@@ -1,5 +1,16 @@
+
 const gameVals = (state = [], action) => {
   switch (action.type) {
+
+    case 'START_NEW_GAME':
+      // reset initial state with new boundaries?
+      return Object.assign({}, state, {
+        lowerBound: action.lowerBound,
+        upperBound: action.upperBound,
+        //TODO: how to access this generateNumber helper function across files
+        //numberToGuess: generateNumber(action.lowerBound, action.upperBound)
+      })
+
 
     case 'SET_LAST_GUESS':
       return Object.assign({}, state, {
@@ -19,7 +30,7 @@ const gameVals = (state = [], action) => {
       if (guess > state.numberToGuess) {
         gameState = "too high"
       }
-      console.log('gameStatte = %s', gameState);
+
       return Object.assign({}, state, {
         gameState: gameState,
         currentGuess: guess

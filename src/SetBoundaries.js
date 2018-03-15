@@ -1,26 +1,47 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-//import { guessNumber, setLastGuess } from './actions'
+import { startNewGame } from './actions'
 
-const SetBoundaries = ({ dispatch }) => {
-  let input; // references the input field in the form via "ref/node/input"
+//const SetBoundaries = ({ dispatch }, props) => {
+class SetBoundaries extends Component {
 
-  return(
-    <div>
-      <form
-        onSubmit = {e => {
-          e.preventDefault();
-          // TODO: Check for empty value
-          //dispatch(setLastGuess());
-          //dispatch(guessNumber(input.value));
-        }}
-      >
-        <input type="text" placeholder="Lower bound"  />
-        <input type="text" placeholder="Upper bound"  />
-        <button type="submit">Reset</button>
-      </form>
-    </div>
-  )
+  render() {
+    let lbInput; // references the input field in the form via "ref/node/input"
+    let ubInput;
+
+    console.log(this);
+    return(
+      <div>
+        <form
+          onSubmit = {e => {
+            e.preventDefault();
+            // TODO: Check for empty values
+
+            console.log('ibInput => %o', lbInput.value)
+
+            // TODO: lower needs to be less than higher
+            this.props.startNewGame(lbInput.value, ubInput.value);
+          }}
+        >
+          <input type="text"
+            placeholder="Lower bound"
+            defaultValue={ this.props.gameVals.lowerBound }
+            ref={node => lbInput = node}
+          />
+
+          <input type="text"
+            placeholder="Upper bound"
+            defaultValue={ this.props.gameVals.upperBound }
+            ref={node => ubInput = node}
+          />
+
+          <button type="submit">Reset</button>
+        </form>
+      </div>
+    )
+  }
+
 }
 
 const mapStateToProps = state => {
@@ -29,8 +50,12 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+ return bindActionCreators({ startNewGame }, dispatch)
+}
+
 const SetBoundariesStore = connect(
-  mapStateToProps
+  mapStateToProps, mapDispatchToProps
 )(SetBoundaries)
 
 export default SetBoundariesStore;
