@@ -9,7 +9,7 @@ class PlayContainer extends Component {
     console.log('numberToGuess -> ' + this.props.gameVals.numberToGuess);
     return (
       <div>
-        <div>Guess the number between {this.props.gameVals.lowerBound} and {this.props.gameVals.upperBound}</div>
+        <p>Instructions: Guess the number between {this.props.gameVals.lowerBound} and {this.props.gameVals.upperBound}</p>
         <div>Last guess: {this.props.gameVals.lastGuess}</div>
         <div>Current guess: {this.props.gameVals.currentGuess}</div>
         <GuessNumber />

@@ -1,21 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { guessNumber } from './actions'
+import { guessNumber, setLastGuess } from './actions'
 
 const GuessNumber = ({ dispatch }) => {
   let input; // references the input field in the form via "ref/node/input"
 
   return(
-    <div>Guess:
+    <div>
       <form
         onSubmit = {e => {
           e.preventDefault();
-          console.log('submitted');
+          // TODO: Check for empty value
+          dispatch(setLastGuess());
           dispatch(guessNumber(input.value));
         }}
       >
         <input type="text" placeholder="guess" ref={node => input = node} />
-        <button type="submit">Make guess</button>
+        <button type="submit">Make a guess</button>
       </form>
     </div>
   )
