@@ -8,6 +8,15 @@ import ConfigContainer from './ConfigContainer';
 
 import './App.css';
 
+// TODO:
+// Ensure there's no +1 issue
+// Ensure accessible from actions
+// Does this belong here in this file?
+const generateNumber = (upperBound=10, lowerBound=0) => {
+  return Math.floor(Math.random() * (upperBound - lowerBound) + lowerBound);
+}
+
+// TODO: Does initialState belong here or in the reducers?
 const initialState = {
   gameVals:
     {
@@ -15,11 +24,11 @@ const initialState = {
       upperBound: 10,
       currentGuess: null,
       lastGuess: null,
-      numberToGuess: 'X'
+      numberToGuess: generateNumber()
     }
 };
+
 const store = createStore(rootReducer, initialState)
-console.log('store = %o', store.getState());
 
 class App extends Component {
   render() {

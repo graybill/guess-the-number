@@ -7,17 +7,24 @@ const gameVals = (state = [], action) => {
       })
 
     case 'GUESS_NUMBER':
+      let guess = parseInt(action.value, 0);
+      let gameState;
+
+      if (guess === state.numberToGuess) {
+        gameState = "correct"
+      }
+      if (guess < state.numberToGuess) {
+        gameState = "too low"
+      }
+      if (guess > state.numberToGuess) {
+        gameState = "too high"
+      }
+      console.log('gameStatte = %s', gameState);
       return Object.assign({}, state, {
-        currentGuess: action.value
+        gameState: gameState,
+        currentGuess: guess
       })
-      
-    case 'SET_NUMBER_ANSWER':
-        return [
-          ...state,
-          {
-            numberAnswer: 10
-          }
-        ]
+
     default:
       return state
   }

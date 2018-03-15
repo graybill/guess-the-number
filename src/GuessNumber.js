@@ -11,6 +11,8 @@ const GuessNumber = ({ dispatch }) => {
         onSubmit = {e => {
           e.preventDefault();
           // TODO: Check for empty value
+
+          // TODO: Should these be two actions? Seems like should be contained in one func
           dispatch(setLastGuess());
           dispatch(guessNumber(input.value));
         }}
