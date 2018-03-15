@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GuessNumber from './GuessNumber';
+import FeedbackMessage from './FeedbackMessage';
 
 class PlayContainer extends Component {
   render() {
@@ -9,12 +10,9 @@ class PlayContainer extends Component {
       <div>
         <p>Instructions: Guess the number between {this.props.gameVals.lowerBound} and {this.props.gameVals.upperBound}</p>
         <GuessNumber />
-        <div className="message">{ this.props.gameVals.gameState }</div>
-
+        <FeedbackMessage />
         <div>Last guess: {this.props.gameVals.lastGuess}</div>
         <div>Current guess: {this.props.gameVals.currentGuess}</div>
-
-
       </div>
     );
   }

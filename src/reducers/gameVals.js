@@ -19,20 +19,20 @@ const gameVals = (state = [], action) => {
 
     case 'GUESS_NUMBER':
       let guess = parseInt(action.value, 0);
-      let gameState;
+      let currentGuessIs;
 
       if (guess === state.numberToGuess) {
-        gameState = "correct - let's play again!";
+        currentGuessIs = "correct";
       }
       if (guess < state.numberToGuess) {
-        gameState = "too low";
+        currentGuessIs = "low";
       }
       if (guess > state.numberToGuess) {
-        gameState = "too high";
+        currentGuessIs = "high";
       }
 
       return Object.assign({}, state, {
-        gameState: gameState,
+        currentGuessIs: currentGuessIs,
         currentGuess: guess
       })
 
