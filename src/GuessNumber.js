@@ -29,15 +29,17 @@ const GuessNumber = ({ dispatch }) => {
           dispatch(guessNumber(guess));
         }}
       >
-        <FormGroup>
+        <div className="form-group col-xs-6">
           <input
             className="form-control"
             type="text"
             placeholder="guess"
             ref={node => guessInput = node}
           />
-        </FormGroup>
+        </div>
+
         <Button type="submit" bsStyle="primary">Make a guess</Button>
+
       </form>
     </div>
   )

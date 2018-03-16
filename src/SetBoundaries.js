@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { startNewGame } from './actions'
-import { FormGroup, Button, ControlLabel } from 'react-bootstrap';
+import { Button, ControlLabel } from 'react-bootstrap';
 
 class SetBoundaries extends Component {
 
@@ -32,7 +32,7 @@ class SetBoundaries extends Component {
           this.props.startNewGame(lower, higher);
         }}
       >
-        <FormGroup bsClass="col-xs-6">
+        <div className="form-group col-xs-6">
           <ControlLabel>Lower bound:</ControlLabel>
           <input type="text"
             className="form-control"
@@ -40,9 +40,9 @@ class SetBoundaries extends Component {
             defaultValue={ this.props.gameVals.lowerBound }
             ref={node => lbInput = node}
           />
-        </FormGroup>
+        </div>
 
-        <FormGroup bsClass="col-xs-6">
+        <div className="form-group col-xs-6">
           <ControlLabel>Upper bound:</ControlLabel>
           <input type="text"
             className="form-control"
@@ -50,8 +50,12 @@ class SetBoundaries extends Component {
             defaultValue={ this.props.gameVals.upperBound }
             ref={node => ubInput = node}
           />
-        </FormGroup>
-        <Button type="submit">Start new game</Button>
+        </div>
+
+        <div className="form-group">
+          <Button type="submit">Start new game</Button>
+        </div>
+
       </form>
     )
   }

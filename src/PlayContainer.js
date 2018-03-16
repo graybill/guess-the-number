@@ -10,13 +10,15 @@ class PlayContainer extends Component {
     return (
       <div>
         <p>Instructions: Guess the number between {this.props.gameVals.lowerBound} and {this.props.gameVals.upperBound}</p>
+
+        <FeedbackMessage />
+
+        <GuessNumber />
+
         <Row>
           <div className="col-xs-5">Last guess: {this.props.gameVals.lastGuess}</div>
           <div className="col-xs-5">Current guess: {this.props.gameVals.currentGuess}</div>
         </Row>
-
-        <GuessNumber />
-        <FeedbackMessage />
 
       </div>
     );

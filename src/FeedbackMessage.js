@@ -6,20 +6,20 @@ class FeedbackMessage extends Component {
 
   render() {
     let message;
-    let bsStyle = 'warning';
+    let bsStyle = 'bg-warning';
     let cg = this.props.currentGuessIs;
 
     if (!cg) {
       return null;
     }
 
-    if (cg === 'correct') { message = "<strong>PEW PEW!</strong> You got it!"; bsStyle = "success" }
+    if (cg === 'correct') { message = "You got it!"; bsStyle = "bg-success" }
     if (cg === 'low') { message = "Too low, try again." }
     if (cg === 'high') { message = "Too high, try again." }
     return (
-      <Alert bsStyle={ bsStyle }>
+      <p className={ bsStyle }>
         { message }
-      </Alert>
+      </p>
     )
   }
 }
