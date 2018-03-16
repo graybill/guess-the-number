@@ -7,7 +7,7 @@ class ConfigContainer extends Component {
   render() {
     return (
       <div>
-        <p>Config Container</p>
+        <hr />
         <SetBoundaries />
       </div>
     );

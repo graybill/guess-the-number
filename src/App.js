@@ -24,7 +24,6 @@ export const initialState = {
     }
 };
 
-
 const store = createStore(rootReducer, initialState)
 
 class App extends Component {
