@@ -8,6 +8,7 @@ class ConfigContainer extends Component {
     return (
       <div>
         <hr />
+        <p>Game Config</p>
         <SetBoundaries />
       </div>
     );

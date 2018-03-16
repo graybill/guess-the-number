@@ -12,13 +12,8 @@ const gameVals = (state = [], action) => {
         numberToGuess: generateNumber(action.upperBound, action.lowerBound)
       })
 
-    case 'SET_LAST_GUESS':
-      return Object.assign({}, state, {
-        lastGuess: state.currentGuess
-      })
-
     case 'GUESS_NUMBER':
-      let guess = parseInt(action.value, 0);
+      let guess = parseInt(action.value);
       let currentGuessIs;
 
       if (guess === state.numberToGuess) {
@@ -32,6 +27,7 @@ const gameVals = (state = [], action) => {
       }
 
       return Object.assign({}, state, {
+        lastGuess: guess,
         currentGuessIs: currentGuessIs,
         currentGuess: guess
       })

@@ -19,7 +19,7 @@ export const initialState = {
       lowerBound: 0,
       upperBound: 10,
       currentGuess: null,
-      lastGuess: null,
+      lastGuess: 'none',
       numberToGuess: generateNumber()
     }
 };

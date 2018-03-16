@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { guessNumber, setLastGuess } from './actions'
-import { FormGroup, Button } from 'react-bootstrap';
+import { guessNumber } from './actions'
+import { Button } from 'react-bootstrap';
 
 const GuessNumber = ({ dispatch }) => {
   let guessInput;
@@ -15,8 +15,7 @@ const GuessNumber = ({ dispatch }) => {
 
           let guess = guessInput.value;
 
-          // TODO: How did we pass this check with an empty input?
-          if (isNaN(guess)) {
+          if (isNaN(guess) || guess.trim() === '') {
             window.alert('please use a number for guessing');
             return;
           }
@@ -24,9 +23,11 @@ const GuessNumber = ({ dispatch }) => {
           // If number is higher than upperbound, we could alert
           // If number is lower than lowerbound, we could alert
 
-          // NB>: Should these be two actions? Seems like should be contained in one func
-          dispatch(setLastGuess());
           dispatch(guessNumber(guess));
+
+          guessInput.value = ''; // empty out input field
+          guessInput.focus();
+
         }}
       >
         <div className="form-group col-xs-6">

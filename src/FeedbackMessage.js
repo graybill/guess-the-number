@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Alert } from 'react-bootstrap';
 
 class FeedbackMessage extends Component {
 
@@ -8,6 +7,9 @@ class FeedbackMessage extends Component {
     let message;
     let bsStyle = 'bg-warning';
     let cg = this.props.currentGuessIs;
+
+    // TODO: Add visual transition so this pops up and goes away in between guesses
+    // to indicate a new guess has been received and processed
 
     if (!cg) {
       return null;
