@@ -9,3 +9,7 @@ To run the application:
 `yarn install`
 
 `yarn start`
+
+
+TODO:
+  - Tests!
