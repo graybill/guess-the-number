@@ -6,5 +6,5 @@ I used this app as a way to introduce myself to using Redux in a React applicati
 
 To run the application:
 
-> yarn install
-> yarn start
+`yarn install`
+`yarn start`
